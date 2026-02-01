@@ -1,31 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Be My Valentine?</title>
+    <title>For You ❤️</title>
     <style>
-        body { text-align: center; font-family: 'Arial', sans-serif; background-color: #ffe6e6; display: flex; flex-direction: column; justify-content: center; height: 100vh; margin: 0; }
-        h1 { color: #ff4d4d; font-size: 3em; }
-        .buttons { margin-top: 50px; }
-        button { font-size: 1.5em; padding: 15px 30px; border: none; border-radius: 10px; cursor: pointer; transition: 0.3s; }
-        #yesBtn { background-color: #ff4d4d; color: white; margin-right: 20px; }
-        #noBtn { background-color: #888; color: white; position: absolute; }
+        body { text-align: center; font-family: 'Arial', sans-serif; background-color: #fff0f5; display: flex; flex-direction: column; justify-content: center; height: 100vh; margin: 0; overflow: hidden; }
+        h1 { color: #d63384; font-size: 2.5em; }
+        .container { position: relative; }
+        button { border: none; border-radius: 12px; cursor: pointer; transition: all 0.2s ease-in-out; font-weight: bold; }
+        #yesBtn { background-color: #ff4d6d; color: white; padding: 15px 30px; font-size: 20px; z-index: 10; }
+        #noBtn { background-color: #adb5bd; color: white; padding: 10px 20px; font-size: 16px; margin-left: 10px; }
     </style>
 </head>
 <body>
-    <h1>Will you be my partner in crime/(some word starting with V)? [Edition 14022026]❤️</h1>
-    <div class="buttons">
-        <button id="yesBtn" onclick="alert('Yay! See you on the 14th! 😘')">YES</button>
-        <button id="noBtn" onmouseover="moveButton()">NO</button>
+    <div id="content">
+        <h1>Will you be my partner in crime/(something that starts with V)? [Edition: 14022026] ❤️</h1>
+        <div class="container">
+            <button id="yesBtn" onclick="celebrate()">YES</button>
+            <button id="noBtn" onclick="makeYesBigger()">NO</button>
+        </div>
     </div>
 
     <script>
-        function moveButton() {
-            var x = Math.random() * (window.innerWidth - document.getElementById('noBtn').offsetWidth);
-            var y = Math.random() * (window.innerHeight - document.getElementById('noBtn').offsetHeight);
-            document.getElementById('noBtn').style.left = x + 'px';
-            document.getElementById('noBtn').style.top = y + 'px';
+        let yesSize = 20;
+        let paddingVar = 15;
+
+        function makeYesBigger() {
+            yesSize += 25; // Increases font size
+            paddingVar += 15; // Increases button thickness
+            document.getElementById('yesBtn').style.fontSize = yesSize + "px";
+            document.getElementById('yesBtn').style.padding = paddingVar + "px " + (paddingVar * 2) + "px";
+            
+            const noQuotes = ["Are you sure?", "Really??", "Think again!", "Last chance!", "Pretty please?"];
+            document.getElementById('noBtn').innerText = noQuotes[Math.floor(Math.random() * noQuotes.length)];
+        }
+
+        function celebrate() {
+            document.getElementById('content').innerHTML = "<h1>Thank God! I was nervous and still am to ask you out! ❤️</h1><p style='font-size:50px;'>🥰✨🎉</p>";
+            document.body.style.backgroundColor = "#ffb6c1";
         }
     </script>
 </body>
